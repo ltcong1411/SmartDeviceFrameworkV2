@@ -1,7 +1,14 @@
 var mqtt = require('mqtt');
 
 const thingsboardHost = "localhost";
-const accessToken = "7xuEICDN8rraFL8YvxB1";
+const accessToken = "gW83nfMSi30l7YBuLxaL";
+
+const minTemperature = 17.5, maxTemperature = 30, minHumidity = 12, maxHumidity = 90;
+
+var data = {
+    temperature: minTemperature + (maxTemperature - minTemperature) * Math.random() ,
+    humidity: minHumidity + (maxHumidity - minHumidity) * Math.random()
+};
 
 console.log('Connecting to: %s using access token: %s', thingsboardHost, accessToken);
 
