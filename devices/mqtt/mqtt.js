@@ -1,7 +1,7 @@
 var mqtt = require('mqtt');
 
 const thingsboardHost = "localhost";
-const accessToken = "gW83nfMSi30l7YBuLxaL";
+const accessToken = "VJZJvYQJMkdf4fte1vtZ";
 
 const minTemperature = 17.5, maxTemperature = 30, minHumidity = 12, maxHumidity = 90;
 

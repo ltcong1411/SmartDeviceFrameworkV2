@@ -1,8 +1,9 @@
+//Requires node.js and mqtt library installed.
 var mqtt = require('mqtt');
 
-// Don't forget to update accessToken constant with your device access token
 const thingsboardHost = "localhost";
-const accessToken = "gW83nfMSi30l7YBuLxaL";
+// Reads the access token from arguments
+const accessToken = process.argv[2];
 const minTemperature = 17.5, maxTemperature = 30, minHumidity = 12, maxHumidity = 90;
 
 // Initialization of temperature and humidity data with random values
@@ -18,20 +19,13 @@ var client  = mqtt.connect('mqtt://'+ thingsboardHost, { username: accessToken }
 // Triggers when client is successfully connected to the Thingsboard server
 client.on('connect', function () {
     console.log('Client connected!');
-    // Uploads firmware version and serial number as device attributes using 'v1/devices/me/attributes' MQTT topic
-    client.subscribe("v1/devices/me/rpc/request/+");
-	client.publish('v1/devices/me/attributes', JSON.stringify({"firmware_version":"1.0.1", "serial_number":"SN-001"}));
+    // Uploads firmware version as device attribute using 'v1/devices/me/attributes' MQTT topic
+    client.publish('v1/devices/me/attributes', JSON.stringify({"firmware_version":"1.0.1"}));
     // Schedules telemetry data upload once per second
     console.log('Uploading temperature and humidity data once per second...');
     setInterval(publishTelemetry, 1000);
 });
-/*
-client.on('message', function (topic, message) {
-  // message is Buffer
-  console.log(message.toString())
-  client.end()
-})
-*/
+
 // Uploads telemetry data using 'v1/devices/me/telemetry' MQTT topic
 function publishTelemetry() {
     data.temperature = genNextValue(data.temperature, minTemperature, maxTemperature);
