@@ -1,6 +1,7 @@
 # SmartDeviceFrameworkV2
 
 1.Install JDK 8
+
 https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-microsoft-windows-platforms.htm
 
 2.Install Maven
