@@ -2,13 +2,13 @@
 var mqtt = require('mqtt');
 
 const thingsboardHost = "localhost";
-const accessToken = "pWfjT65H32BjaoPHYDdW";//process.argv[2];
+const accessToken = "vVBkck8eC4jQ82AGw2UL";//process.argv[2];
 
-const deviceId = "RN1";
+const deviceId = "RN2";
 var firmware = "1.0.0";
-var address = "TIC room, TMA Solution Lab 6";
-var latitude = 10.8560009;
-var longitude = 106.62886;
+var address = "TAC room, TMA Solution Lab 6";
+var latitude = 10.8556294;
+var longitude = 106.6279571;
 
 // Reads the access token from arguments
 const minEnergy = 0.0062, maxEnergy = 0.0129;
